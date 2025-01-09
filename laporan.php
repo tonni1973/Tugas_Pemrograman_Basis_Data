@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-12">
         <a href="cetak.php" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i>Cetak Data</a>
-        <a href="cetak_excel.php" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i>Export To Excel</a>
+        <a href="cetak_excel.php" target="_blank" class="btn btn-success"><i class="fa fa-print"></i>Export To Excel</a>
         <br>
         <br>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacin="5">
