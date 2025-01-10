@@ -1,6 +1,4 @@
 <?php
-    include_once "koneksi.php";
-
     if($_SESSION["user"]["level"] != "admin"){
         header('location:404.php');
     }
