@@ -16,6 +16,7 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -128,5 +129,50 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <script>
+var ctxKategori = document.getElementById('chartKategori').getContext('2d');
+var ctxUser = document.getElementById('chartUser').getContext('2d');
+
+// Ambil data dari server PHP
+<?php
+    $totalKategori = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM kategori"));
+    $totalBuku = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM buku"));
+    $totalUlasan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ulasan"));
+    $totalUser = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM user"));
+?>
+
+// Grafik Kategori dan Buku
+var chartKategori = new Chart(ctxKategori, {
+    type: 'pie',
+    data: {
+        labels: ['Kategori', 'Buku'],
+        datasets: [{
+            data: [<?php echo $totalKategori; ?>, <?php echo $totalBuku; ?>],
+            backgroundColor: ['#007bff', '#ffc107'],
+        }]
+    }
+});
+
+// Grafik Ulasan dan User
+var chartUser = new Chart(ctxUser, {
+    type: 'bar',
+    data: {
+        labels: ['Ulasan', 'User'],
+        datasets: [{
+            label: 'Jumlah',
+            data: [<?php echo $totalUlasan; ?>, <?php echo $totalUser; ?>],
+            backgroundColor: ['#28a745', '#dc3545'],
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
     </body>
 </html>
