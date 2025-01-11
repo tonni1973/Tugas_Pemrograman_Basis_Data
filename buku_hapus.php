@@ -1,3 +1,8 @@
+<?php
+    if($_SESSION["user"]["level"] != "admin"){
+        header('location:404.php');
+    }
+?>
 <?php 
     $id = $_GET['id'];
     $query = mysqli_query($koneksi, "DELETE FROM  buku WHERE id_buku='$id'");

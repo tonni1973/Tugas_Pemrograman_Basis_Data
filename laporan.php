@@ -2,7 +2,6 @@
     if($_SESSION["user"]["level"] != "admin"){
         header('location:404.php');
     }
-
 ?>
 <h1 class="mt-4">Laporan Peminjaman Buku</h1>
 <div class="row">

@@ -1,3 +1,8 @@
+<?php
+    if($_SESSION["user"]["level"] != "admin"){
+        header('location:404.php');
+    }
+?>
 <h1 class="mt-4">Buku</h1>
 <div class="card">
     <div class="card-body">

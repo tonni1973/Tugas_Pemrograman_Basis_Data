@@ -49,15 +49,14 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Kategori
                             </a>
-                            <a class="nav-link" href="?page=buku">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-                                Buku
-                            </a>
-
                             <?php 
                                 }else{
 
                             ?>
+                            <a class="nav-link" href="?page=buku">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                                Buku
+                            </a>
                             <a class="nav-link" href="?page=peminjaman">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Peminjaman
