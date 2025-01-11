@@ -36,7 +36,7 @@
                                                     if($_SESSION['user']['level'] == 'admin'){
                                                         echo '<script>alert("Selamat Datang di Perpus Digital"); location.href="index.php" </script>';
                                                     } else {
-                                                        echo '<script>alert("Selamat Datang di Perpus Digital"); location.href="peminjaman.php" </script>';
+                                                        echo '<script>alert("Selamat Datang di Perpus Digital"); location.href="index.php?page=peminjaman" </script>';
                                                     }
                                                 } else {
                                                     echo '<script>alert("Maaf, username atau password salah")</script>';
