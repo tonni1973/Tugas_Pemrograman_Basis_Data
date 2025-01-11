@@ -33,7 +33,11 @@
                                                 $cek = mysqli_num_rows($data);
                                                 if ($cek > 0) {
                                                     $_SESSION['user'] = mysqli_fetch_array($data);
-                                                    echo '<script>alert("Selamat Datang di Perpus Digital"); location.href="index.php" </script>';
+                                                    if($_SESSION['user']['level'] == 'admin'){
+                                                        echo '<script>alert("Selamat Datang di Perpus Digital"); location.href="index.php" </script>';
+                                                    } else {
+                                                        echo '<script>alert("Selamat Datang di Perpus Digital"); location.href="peminjaman.php" </script>';
+                                                    }
                                                 } else {
                                                     echo '<script>alert("Maaf, username atau password salah")</script>';
                                                 }

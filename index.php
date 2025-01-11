@@ -49,19 +49,21 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Kategori
                             </a>
-                            <?php 
-                                }else{
-
+                            <?php
+                                }
                             ?>
                             <a class="nav-link" href="?page=buku">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                                 Buku
                             </a>
+                            <?php
+                                if($_SESSION["user"]["level"] == "peminjam"){
+                            ?>
                             <a class="nav-link" href="?page=peminjaman">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Peminjaman
                             </a>
-                            <?php
+                            <?php 
                                 }
                             ?>
                             <a class="nav-link" href="?page=ulasan">
