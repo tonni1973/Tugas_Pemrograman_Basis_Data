@@ -42,13 +42,13 @@
             <div class="row mb-3">
                 <div class="col-md-4">Tanggal Peminjaman</div>
                 <div class="col-md-8">
-                    <input type="date" class="form-control" name="tanggal_peminjaman">
+                    <input type="date" class="form-control" name="tanggal_peminjaman" min="<?php echo date('Y-m-d'); ?>">
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-4">Tanggal Pengembalian</div>
                 <div class="col-md-8">
-                    <input type="date" class="form-control" name="tanggal_pengembalian">
+                    <input type="date" class="form-control" name="tanggal_pengembalian" min="<?php echo date('Y-m-d'); ?>">
                 </div>
             </div>
             <div class="row mb-3">
