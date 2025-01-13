@@ -72,7 +72,6 @@
                                             <div class="form-floating mb-3">
                                                 <select name="level" id="level" class="form-control" required>
                                                     <option value="admin">Admin</option>
-                                                    <option value="petugas">Petugas</option>
                                                     <option value="peminjam">Member</option>
                                                 </select>
                                                 <label for="level">Level</label>
