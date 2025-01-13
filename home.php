@@ -7,8 +7,7 @@
         <div class="card bg-primary text-white mb-4">
             <div class="card-body">
                 <?php
-                echo mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM kategori"));
-
+                    echo mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM kategori"));
                 ?>
 
                 Total Kategori</div>
