@@ -1,4 +1,9 @@
-<h1 class="mt-4">Pinjam Buku</h1>
+<h1 class="mt-4">
+    <?php 
+        $title = $_SESSION['user']['level'] == 'admin' ? "Peminjaman Buku" : "Pinjam Buku";
+        echo "$title";
+    ?>
+</h1>
 <div class="row">
     <div class="col-md-12">
         <div class="d-flex justify-content-between align-items-center mb-3">
