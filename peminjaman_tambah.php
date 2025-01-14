@@ -56,7 +56,13 @@
                 <div class="col-md-8">
                     <select name="status_peminjaman" class="form-control">
                         <option value="dipinjam">Dipinjam</option>
+                        <?php
+                            if($_SESSION['user']['level'] == 'admin'){
+                        ?>
                         <option value="dikembalikan">Dikembalikan</option>
+                        <?php
+                            } 
+                        ?>
                     </select>
                 </div>
             </div>
@@ -65,7 +71,7 @@
                 <div class="cold-md-8">
                     <button type="submit" class="btn btn-primary" name="submit" value="submit">Simpan</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>
-                    <a href="?page-peminjaman" class="btn btn-danger">Kembali</a>
+                    <a href="?page=peminjaman" class="btn btn-danger">Kembali</a>
                 </div>
             </div>
 

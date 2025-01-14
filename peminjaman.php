@@ -24,7 +24,13 @@
                 <th>Tanggal Peminjaman</th>
                 <th>Tanggal Pengembalian</th>
                 <th>Status Peminjaman</th>
+                <?php
+                    if($_SESSION['user']['level'] == 'admin'){
+                ?>
                 <th>Aksi</th>
+                <?php
+                    } 
+                ?>
             </tr>
             <?php
                 $i = 1;
@@ -54,10 +60,12 @@
                         <td>
                             <?php
                                 if($data['status_peminjaman'] != 'dikembalikan'){
+                                    if($_SESSION['user']['level'] == 'admin'){
                             ?>
-                            <a href="?page=peminjaman_ubah&&id=<?php echo $data['id_peminjaman']; ?>" class="btn btn-info">Ubah</a>
-                            <a onclick="return confirm('Apakah Anda Akan menghapus data ini')" href="?page=peminjaman_hapus&&id=<?php echo $data['id_peminjaman']; ?>" class="btn btn-danger">Hapus</a>
+                                <a href="?page=peminjaman_ubah&&id=<?php echo $data['id_peminjaman']; ?>" class="btn btn-info">Ubah</a>
+                                <a onclick="return confirm('Apakah Anda Akan menghapus data ini')" href="?page=peminjaman_hapus&&id=<?php echo $data['id_peminjaman']; ?>" class="btn btn-danger">Hapus</a>
                             <?php 
+                                    }
                                 }
                             ?>
                         </td>
