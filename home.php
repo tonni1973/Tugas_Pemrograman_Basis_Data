@@ -1,3 +1,8 @@
+<?php
+    if($_SESSION["user"]["level"] != "admin"){
+        header('location:404.php');
+    }
+?>
 <h1 class="mt-4">Dashboard</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Dashboard</li>
