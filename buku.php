@@ -40,7 +40,7 @@
             
             $sql = "SELECT * FROM buku LEFT JOIN kategori ON buku.id_kategori = kategori.id_kategori";
             if (!empty($cari)) {
-                $sql .= " WHERE buku.judul LIKE '%$cari%' OR buku.penulis LIKE '%$cari%'";
+                $sql .= " WHERE buku.judul LIKE '%$cari%' OR buku.penulis LIKE '%$cari% OR buku.kategori LIKE '%$cari%'";
             }
 
             $query = mysqli_query($koneksi, $sql);
