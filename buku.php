@@ -12,7 +12,7 @@
             <form method="GET" action="" class="d-flex align-items-center">
                 <input type="hidden" name="page" value="buku">
                 <input type="text" name="cari" class="form-control form-control-sm" placeholder="Cari buku..." style="width: 200px;">
-                <button type="submit" class="btn btn-secondary btn-sm ms-2">Cari</button>
+                <button type="submit" class="btn btn-primary btn-sm ms-2">Cari</button>
             </form>
         </div>
 
