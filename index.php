@@ -59,16 +59,10 @@ if (!isset($_SESSION['user'])) {
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Buku
                         </a>
-                        <?php
-                        if ($_SESSION["user"]["level"] == "peminjam") {
-                        ?>
-                            <a class="nav-link" href="?page=peminjaman">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        <a class="nav-link" href="?page=peminjaman">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Peminjaman
-                            </a>
-                        <?php
-                        }
-                        ?>
+                        </a>
                         <a class="nav-link" href="?page=ulasan">
                             <div class="sb-nav-link-icon"><i class="fas fa-comment"></i></div>
                             Ulasan
