@@ -59,6 +59,16 @@ if (!isset($_SESSION['user'])) {
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Buku
                         </a>
+                        <?php
+                            if ($_SESSION["user"]["level"] == "admin") {
+                        ?>
+                        <a class="nav-link" href="?page=user">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Pengguna
+                        </a>
+                        <?php
+                            }
+                        ?>
                         <a class="nav-link" href="?page=peminjaman">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Peminjaman
