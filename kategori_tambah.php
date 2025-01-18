@@ -10,7 +10,7 @@
                     $query = mysqli_query($koneksi, "INSERT INTO kategori(kategori) values('$kategori')");
 
                     if ($query) {
-                        echo '<script>alert("Tambah Data Berhasil");</script>';
+                        echo '<script>alert("Tambah Data Berhasil"); location.href="?page=kategori"</script>';
                     } else {
                         echo '<script>alert("Tambah Data Gagal");</script>';
                     }
