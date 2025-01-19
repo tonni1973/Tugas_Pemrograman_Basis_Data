@@ -75,7 +75,9 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
 (3, 'Pengembangan Diri'),
 (4, 'Fiksi'),
 (5, 'Biografi'),
-(6, 'Filsafat');
+(6, 'Filsafat'),
+(7, 'Fantasi'),
+(8, 'Romansa');
 
 -- --------------------------------------------------------
 
@@ -98,7 +100,8 @@ CREATE TABLE `peminjaman` (
 
 INSERT INTO `peminjaman` (`id_peminjaman`, `id_user`, `id_buku`, `tanggal_peminjaman`, `tanggal_pengembalian`, `status_peminjaman`) VALUES
 (1, 4, 6, '2025-01-13', '2025-01-15', 'dikembalikan'),
-(2, 4, 14, '2025-01-14', '2025-01-17', 'dipinjam');
+(2, 4, 14, '2025-01-14', '2025-01-17', 'dikembalikan'),
+(3, 5, 7, '2025-01-18', '2025-01-20', 'dipinjam');
 
 -- --------------------------------------------------------
 
@@ -120,7 +123,8 @@ CREATE TABLE `ulasan` (
 
 INSERT INTO `ulasan` (`id_ulasan`, `id_user`, `id_buku`, `ulasan`, `rating`) VALUES
 (1, 1, 16, 'Bukunya Bagus', 10),
-(2, 4, 6, 'Buku yang cukup bagus', 8);
+(2, 4, 6, 'Buku yang cukup bagus', 8),
+(3, 4, 11, 'Bukunya bagus', 9);
 
 -- --------------------------------------------------------
 
@@ -144,8 +148,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `email`, `alamat`, `no_telepon`, `level`) VALUES
-(1, 'Tonni Ramdani', 'toni', 'ac43724f16e9241d990427ab7c8f4228', 'toni@example.com', 'Bandung', '085778181248', 'admin'),
-(4, 'Budiono Siregar', 'budi', 'ac43724f16e9241d990427ab7c8f4228', 'budiono@example.com', 'Bandung', '085556666677', 'peminjam');
+(1, 'Tonni', 'toni', 'ac43724f16e9241d990427ab7c8f4228', 'toni@example.com', 'Bandung', '085773403029', 'admin'),
+(4, 'Budiono Siregar', 'budi', 'ac43724f16e9241d990427ab7c8f4228', 'budiono@example.com', 'Bandung', '085773402727', 'peminjam'),
+(5, 'Mirana Nur Alifah', 'mirana', 'ac43724f16e9241d990427ab7c8f4228', 'mirana@example.com', 'Garut', '085773403040', 'peminjam');
 
 --
 -- Indexes for dumped tables
