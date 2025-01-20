@@ -122,9 +122,42 @@ CREATE TABLE `ulasan` (
 --
 
 INSERT INTO `ulasan` (`id_ulasan`, `id_user`, `id_buku`, `ulasan`, `rating`) VALUES
-(1, 1, 16, 'Bukunya Bagus', 10),
-(2, 4, 6, 'Buku yang cukup bagus', 8),
-(3, 4, 11, 'Bukunya bagus', 9);
+(1, 1, 16, 'Bukunya sangat inspiratif dan penuh wawasan.', 10),
+(2, 1, 6, 'Buku sejarah yang menarik dan mudah dipahami.', 9),
+(3, 1, 10, 'Memoar Michelle Obama sangat menyentuh hati.', 10),
+(4, 1, 12, 'Novel ini menggugah semangat untuk mengejar mimpi.', 9),
+(5, 1, 13, 'Sangat membantu memahami keuangan secara mendalam.', 8),
+(6, 1, 15, 'Perjuangan Tara Westover benar-benar menginspirasi.', 10),
+(7, 4, 6, 'Buku yang cukup bagus dan sangat informatif.', 8),
+(8, 4, 7, 'Panduan membangun kebiasaan yang luar biasa.', 9),
+(9, 4, 8, 'Novel yang penuh dengan pesan moral penting.', 9),
+(10, 4, 9, 'Distopia klasik yang sangat relevan.', 8),
+(11, 4, 11, 'Buku yang berani dan sangat realistis.', 9),
+(12, 4, 14, 'Kisah remaja yang relatable dan mendalam.', 8),
+(13, 6, 6, 'Evolusi manusia dijelaskan dengan sangat baik.', 9),
+(14, 6, 8, 'Salah satu novel terbaik yang pernah saya baca.', 10),
+(15, 6, 10, 'Memoar yang penuh inspirasi dan kejujuran.', 9),
+(16, 6, 11, 'Pendekatan yang unik dalam pengembangan diri.', 8),
+(17, 6, 12, 'Petualangan yang penuh dengan pelajaran hidup.', 9),
+(18, 6, 15, 'Kisah perjuangan hidup yang luar biasa.', 10),
+(19, 7, 7, 'Panduan ini sangat membantu saya mengubah kebiasaan.', 10),
+(20, 7, 9, 'Novel yang memberikan wawasan baru tentang politik.', 8),
+(21, 7, 12, 'Ceritanya sangat memotivasi dan penuh makna.', 9),
+(22, 7, 13, 'Pandangan baru tentang literasi keuangan.', 8),
+(23, 7, 14, 'Penggambaran tokoh yang kuat dan menggugah.', 8),
+(24, 7, 16, 'Topik yang mendalam, meskipun sedikit berat.', 7),
+(25, 8, 6, 'Membuka wawasan tentang sejarah manusia.', 9),
+(26, 8, 7, 'Saya mulai menerapkan tips dari buku ini.', 10),
+(27, 8, 8, 'Novel yang mengajarkan banyak nilai kehidupan.', 9),
+(28, 8, 9, 'Menggambarkan ancaman totalitarianisme dengan baik.', 8),
+(29, 8, 10, 'Memoar ini membuat saya lebih menghargai hidup.', 10),
+(30, 8, 15, 'Ceritanya sangat menyentuh dan inspiratif.', 10),
+(31, 9, 7, 'Sangat bermanfaat untuk meningkatkan produktivitas.', 9),
+(32, 9, 8, 'Kisah klasik yang tak lekang oleh waktu.', 10),
+(33, 9, 10, 'Buku ini sangat inspiratif dan informatif.', 9),
+(34, 9, 11, 'Membantu saya berpikir lebih realistis.', 8),
+(35, 9, 13, 'Banyak wawasan penting tentang manajemen keuangan.', 8),
+(36, 9, 16, 'Sangat bermanfaat untuk pengembangan diri.', 9);
 
 -- --------------------------------------------------------
 
@@ -150,7 +183,11 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `email`, `alamat`, `no_telepon`, `level`) VALUES
 (1, 'Tonni', 'toni', 'ac43724f16e9241d990427ab7c8f4228', 'toni@example.com', 'Bandung', '085773403029', 'admin'),
 (4, 'Budiono Siregar', 'budi', 'ac43724f16e9241d990427ab7c8f4228', 'budiono@example.com', 'Bandung', '085773402727', 'peminjam'),
-(5, 'Mirana Nur Alifah', 'mirana', 'ac43724f16e9241d990427ab7c8f4228', 'mirana@example.com', 'Garut', '085773403040', 'peminjam');
+(5, 'Mirana Nur Alifah', 'mirana', 'ac43724f16e9241d990427ab7c8f4228', 'mirana@example.com', 'Garut', '085773403040', 'peminjam'),
+(6, 'Siti Aisyah', 'aisyah', 'ac43724f16e9241d990427ab7c8f4228', 'aisyah@example.com', 'Jakarta', '081234567890', 'peminjam'),
+(7, 'Rahmat Hidayat', 'rahmat', 'ac43724f16e9241d990427ab7c8f4228', 'rahmat@example.com', 'Surabaya', '082345678901', 'peminjam'),
+(8, 'Dewi Kartika', 'dewi', 'ac43724f16e9241d990427ab7c8f4228', 'dewi@example.com', 'Yogyakarta', '083456789012', 'peminjam'),
+(9, 'ahha', 'ahha', 'ac43724f16e9241d990427ab7c8f4228', 'ahha@gmail', 'Bandung', '085888666677', 'peminjam');
 
 --
 -- Indexes for dumped tables
