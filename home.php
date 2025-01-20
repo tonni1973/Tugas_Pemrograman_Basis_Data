@@ -68,7 +68,7 @@
         <canvas id="chartKategori"></canvas>
     </div>
     <div class="col-md-6">
-        <h1>5 Rating Buku Teratas</h1>
+        <h1>7 Rating Buku Teratas</h1>
         <canvas id="chartUser"></canvas>
     </div>
 </div>

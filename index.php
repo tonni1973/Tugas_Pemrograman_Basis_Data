@@ -143,7 +143,7 @@ if (!isset($_SESSION['user'])) {
         $kategori = mysqli_query($koneksi, "SELECT kategori FROM kategori");
         $totalBukuKategori = mysqli_query($koneksi, "SELECT COUNT(b.id_buku) AS jumlah_buku FROM kategori k LEFT JOIN buku b ON k.id_kategori = b.id_kategori GROUP BY k.id_kategori, k.kategori;");
 
-        $ratingBuku = mysqli_query($koneksi, "SELECT buku.judul as judul, ROUND(AVG(ulasan.rating) / COUNT(ulasan.rating), 1) AS rating FROM buku LEFT JOIN ulasan ON buku.id_buku = ulasan.id_buku GROUP BY buku.id_buku ORDER BY rating desc LIMIT 5;");
+        $ratingBuku = mysqli_query($koneksi, "SELECT buku.judul as judul, ROUND(AVG(ulasan.rating), 1) AS rating FROM buku LEFT JOIN ulasan ON buku.id_buku = ulasan.id_buku GROUP BY buku.id_buku ORDER BY rating desc LIMIT 7;");
 
         $kategoriLabels = [];
         while ($row = mysqli_fetch_assoc($kategori)) {
@@ -202,8 +202,12 @@ if (!isset($_SESSION['user'])) {
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            min: 0, // Memaksa skala x mulai dari 0
+                        }
+
                     }
                 }
             }
