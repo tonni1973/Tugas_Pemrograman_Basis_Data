@@ -63,6 +63,7 @@
     </div>
 </div>
 <div class="row">
+    <h1>Kategori</h1>
     <div class="col-md-6">
         <canvas id="chartKategori"></canvas>
     </div>

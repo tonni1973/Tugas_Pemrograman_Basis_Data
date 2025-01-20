@@ -150,7 +150,7 @@ if (!isset($_SESSION['user'])) {
 
             $kategoriLabels = [];
             while ($row = mysqli_fetch_assoc($kategori)) {
-                $kategoriLabels[] = '"' . $row['kategori'] . '"';  // Pastikan label dalam format string
+                $kategoriLabels[] = '"' . $row['kategori'] . '"';  
             }
 
             $kategoriLabelsString = implode(',', $kategoriLabels);
@@ -158,13 +158,13 @@ if (!isset($_SESSION['user'])) {
             $backgroundColors = [];
             $warnaArray = ['#007bff', '#ffc107', '#28a745', '#dc3545', '#6f42c1', '#20c997', '#17a2b8', '#e83e8c', '#fd7e14', '#343a40'];
             for ($i = 0; $i < count($kategoriLabels); $i++) {
-                $backgroundColors[] = '"' . $warnaArray[$i % count($warnaArray)] . '"';  // Mengulang warna jika warna kurang
+                $backgroundColors[] = '"' . $warnaArray[$i % count($warnaArray)] . '"';  
             }
             $backgroundColorsString = implode(',', $backgroundColors);
 
             $totalBukuKategoriLabels = [];
             while ($row = mysqli_fetch_assoc($totalBukuKategori)) {
-                $totalBukuKategoriLabels[] = '"' . $row['jumlah_buku'] . '"';  // Pastikan label dalam format string
+                $totalBukuKategoriLabels[] = '"' . $row['jumlah_buku'] . '"';  
             }
             $totalBukuKategoriLabelsString = implode(',', $totalBukuKategoriLabels);
         ?>
