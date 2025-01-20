@@ -63,11 +63,12 @@
     </div>
 </div>
 <div class="row">
-    <h1>Kategori</h1>
     <div class="col-md-6">
+    <h1>Daftar Jumlah Buku Berdasarkan Kategori</h1>
         <canvas id="chartKategori"></canvas>
     </div>
     <div class="col-md-6">
+        <h1>5 Rating Buku Teratas</h1>
         <canvas id="chartUser"></canvas>
     </div>
 </div>

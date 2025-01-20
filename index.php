@@ -60,18 +60,18 @@ if (!isset($_SESSION['user'])) {
                             Buku
                         </a>
                         <?php
-                            if ($_SESSION["user"]["level"] == "admin") {
+                        if ($_SESSION["user"]["level"] == "admin") {
                         ?>
-                        <a class="nav-link" href="?page=user">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                            Pengguna
-                        </a>
+                            <a class="nav-link" href="?page=user">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                Pengguna
+                            </a>
                         <?php
-                            }
+                        }
                         ?>
                         <a class="nav-link" href="?page=peminjaman">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Peminjaman
+                            Peminjaman
                         </a>
                         <a class="nav-link" href="?page=ulasan">
                             <div class="sb-nav-link-icon"><i class="fas fa-comment"></i></div>
@@ -136,32 +136,45 @@ if (!isset($_SESSION['user'])) {
 
         // Ambil data dari server PHP
         <?php
-            $totalKategori = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM kategori"));
-            $totalBuku = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM buku"));
-            $totalUlasan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ulasan"));
-            $totalUser = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM user"));
-            $kategori = mysqli_query($koneksi, "SELECT kategori FROM kategori");
-            $totalBukuKategori = mysqli_query($koneksi, "SELECT COUNT(b.id_buku) AS jumlah_buku FROM kategori k LEFT JOIN buku b ON k.id_kategori = b.id_kategori GROUP BY k.id_kategori, k.kategori;");
+        $totalKategori = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM kategori"));
+        $totalBuku = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM buku"));
+        $totalUlasan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ulasan"));
+        $totalUser = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM user"));
+        $kategori = mysqli_query($koneksi, "SELECT kategori FROM kategori");
+        $totalBukuKategori = mysqli_query($koneksi, "SELECT COUNT(b.id_buku) AS jumlah_buku FROM kategori k LEFT JOIN buku b ON k.id_kategori = b.id_kategori GROUP BY k.id_kategori, k.kategori;");
 
-            $kategoriLabels = [];
-            while ($row = mysqli_fetch_assoc($kategori)) {
-                $kategoriLabels[] = '"' . $row['kategori'] . '"';  
-            }
+        $ratingBuku = mysqli_query($koneksi, "SELECT buku.judul as judul, ROUND(AVG(ulasan.rating) / COUNT(ulasan.rating), 1) AS rating FROM buku LEFT JOIN ulasan ON buku.id_buku = ulasan.id_buku GROUP BY buku.id_buku ORDER BY rating desc LIMIT 5;");
 
-            $kategoriLabelsString = implode(',', $kategoriLabels);
+        $kategoriLabels = [];
+        while ($row = mysqli_fetch_assoc($kategori)) {
+            $kategoriLabels[] = '"' . $row['kategori'] . '"';
+        }
 
-            $backgroundColors = [];
-            $warnaArray = ['#007bff', '#ffc107', '#28a745', '#dc3545', '#6f42c1', '#20c997', '#17a2b8', '#e83e8c', '#fd7e14', '#343a40'];
-            for ($i = 0; $i < count($kategoriLabels); $i++) {
-                $backgroundColors[] = '"' . $warnaArray[$i % count($warnaArray)] . '"';  
-            }
-            $backgroundColorsString = implode(',', $backgroundColors);
+        $kategoriLabelsString = implode(',', $kategoriLabels);
 
-            $totalBukuKategoriLabels = [];
-            while ($row = mysqli_fetch_assoc($totalBukuKategori)) {
-                $totalBukuKategoriLabels[] = '"' . $row['jumlah_buku'] . '"';  
-            }
-            $totalBukuKategoriLabelsString = implode(',', $totalBukuKategoriLabels);
+        $backgroundColors = [];
+        $warnaArray = ['#007bff', '#ffc107', '#28a745', '#dc3545', '#6f42c1', '#20c997', '#17a2b8', '#e83e8c', '#fd7e14', '#343a40'];
+        for ($i = 0; $i < count($kategoriLabels); $i++) {
+            $backgroundColors[] = '"' . $warnaArray[$i % count($warnaArray)] . '"';
+        }
+        $backgroundColorsString = implode(',', $backgroundColors);
+
+        $totalBukuKategoriLabels = [];
+        while ($row = mysqli_fetch_assoc($totalBukuKategori)) {
+            $totalBukuKategoriLabels[] = '"' . $row['jumlah_buku'] . '"';
+        }
+        $totalBukuKategoriLabelsString = implode(',', $totalBukuKategoriLabels);
+
+        // rating buku
+        $judulBukuLabels = [];
+        $ratingBukuLabels = [];
+        while ($row = mysqli_fetch_assoc($ratingBuku)) {
+            $judulBukuLabels[] = '"' . $row['judul'] . '"';
+            $ratingBukuLabels[] = '"' . $row['rating'] . '"';
+        }
+
+        $judulBukuLabelsString = implode(',', $judulBukuLabels);
+        $ratingBukuLabelsString = implode(',', $ratingBukuLabels);
         ?>
 
         // Grafik Kategori dan Buku
@@ -178,13 +191,13 @@ if (!isset($_SESSION['user'])) {
 
         // Grafik Ulasan dan User
         var chartUser = new Chart(ctxUser, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
-                labels: ['Ulasan', 'User'],
+                labels: [<?php echo $judulBukuLabelsString; ?>],
                 datasets: [{
-                    label: 'Jumlah',
-                    data: [<?php echo $totalUlasan; ?>, <?php echo $totalUser; ?>],
-                    backgroundColor: ['#28a745', '#dc3545'],
+                    label: 'Rating',
+                    data: [<?php echo $ratingBukuLabelsString; ?>],
+                    backgroundColor: [<?php echo $backgroundColorsString; ?>],
                 }]
             },
             options: {
