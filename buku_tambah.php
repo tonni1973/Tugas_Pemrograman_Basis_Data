@@ -20,7 +20,7 @@
                     $query = mysqli_query($koneksi, "INSERT INTO buku (id_kategori, judul, penulis, penerbit, tahun_terbit, deskripsi) values ('$id_kategori','$judul','$penulis','$penerbit','$tahun_terbit','$deskripsi')");
 
                     if ($query) {
-                        echo '<script>alert("Tambah Data Berhasil");</script>';
+                        echo '<script>alert("Tambah Data Berhasil"); location.href="?page=buku"</script>';
                     } else {
                         echo '<script>alert("Tambah Data Gagal");</script>';
                     }

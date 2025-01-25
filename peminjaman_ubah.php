@@ -17,9 +17,9 @@
                     $query = mysqli_query($koneksi, "UPDATE peminjaman set id_buku='$id_buku', tanggal_peminjaman='$tanggal_peminjaman', tanggal_pengembalian='$tanggal_pengembalian', status_peminjaman='$status_peminjaman' WHERE id_peminjaman=$id");
 
                     if ($query) {
-                        echo '<script>alert("Tambah Data Berhasil");</script>';
+                        echo '<script>alert("Ubah Data Berhasil"); location.href="?page=peminjaman"</script>';
                     } else {
-                        echo '<script>alert("Tambah Data Gagal");</script>';
+                        echo '<script>alert("Ubah Data Gagal");</script>';
                     }
             }
             $query = mysqli_query($koneksi, "SELECT * FROM peminjaman WHERE id_peminjaman=$id");

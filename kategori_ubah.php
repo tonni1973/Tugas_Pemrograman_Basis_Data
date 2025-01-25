@@ -11,9 +11,9 @@
                     $query = mysqli_query($koneksi, "UPDATE kategori set kategori='$kategori' WHERE id_kategori='$id'");
 
                     if ($query) {
-                        echo '<script>alert("Tambah Data Berhasil");</script>';
+                        echo '<script>alert("Ubah Data Berhasil"); location.href="?page=kategori"</script>';
                     } else {
-                        echo '<script>alert("Tambah Data Gagal");</script>';
+                        echo '<script>alert("Ubah Data Gagal");</script>';
                     }
             }
             $query = mysqli_query($koneksi, "SELECT * FROM kategori where id_kategori=$id");

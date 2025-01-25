@@ -21,9 +21,9 @@
                     $query = mysqli_query($koneksi, "UPDATE buku SET id_kategori='$id_kategori', judul='$judul', penulis='$penulis', penerbit='$penerbit', tahun_terbit='$tahun_terbit', deskripsi='$deskripsi' WHERE id_buku='$id'");
 
                     if ($query) {
-                        echo '<script>alert("Tambah Data Berhasil");</script>';
+                        echo '<script>alert("Ubah Data Berhasil"); location.href="?page=buku"</script>';
                     } else {
-                        echo '<script>alert("Tambah Data Gagal");</script>';
+                        echo '<script>alert("Ubah Data Gagal");</script>';
                     }
             }
             $query = mysqli_query($koneksi, "SELECT * FROM buku  WHERE id_buku=$id");

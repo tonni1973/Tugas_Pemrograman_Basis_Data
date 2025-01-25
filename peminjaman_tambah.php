@@ -16,7 +16,7 @@
                     $query = mysqli_query($koneksi, "INSERT INTO peminjaman(id_buku, id_user, tanggal_peminjaman, tanggal_pengembalian, status_peminjaman) values ('$id_buku', '$id_user', '$tanggal_peminjaman', '$tanggal_pengembalian', '$status_peminjaman')");
 
                     if ($query) {
-                        echo '<script>alert("Tambah Data Berhasil");</script>';
+                        echo '<script>alert("Tambah Data Berhasil"); location.href="?page=peminjaman"</script>';
                     } else {
                         echo '<script>alert("Tambah Data Gagal");</script>';
                     }
