@@ -6,9 +6,7 @@
 <h1 class="mt-4">Laporan Peminjaman Buku</h1>
 <div class="row">
     <div class="col-md-12">
-        <!-- Form Filter -->
         <form method="GET" action="">
-            <!-- Tambahkan input tersembunyi untuk parameter "page" -->
             <input type="hidden" name="page" value="laporan">
             <div class="form-row">
                 <div class="form-group col-md-3">
@@ -45,8 +43,16 @@
             <a href="?page=laporan" class="btn btn-secondary">Reset</a>
         </form>
         <br>
+        
+        <?php 
+            if(isset($_GET['user']) ||  isset($_GET['status']) || isset($_GET['tanggal_peminjaman']) || isset($_GET['tanggal_pengembalian'])){
+        ?>
+        <a href="cetak.php?user=<?php echo $_GET['user'] ?>&status=<?php echo $_GET['status'] ?>&tanggal_peminjaman=<?php echo $_GET['tanggal_peminjaman'] ?>&tanggal_pengembalian=<?php echo $_GET['tanggal_pengembalian'] ?>" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i>Cetak Data</a>
+        <a href="cetak_excel.php?user=<?php echo $_GET['user'] ?>&status=<?php echo $_GET['status'] ?>&tanggal_peminjaman=<?php echo $_GET['tanggal_peminjaman'] ?>&tanggal_pengembalian=<?php echo $_GET['tanggal_pengembalian'] ?>" target="_blank" class="btn btn-success"><i class="fa fa-print"></i>Export To Excel</a>
+        <?php } else {  ?>
         <a href="cetak.php" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i>Cetak Data</a>
         <a href="cetak_excel.php" target="_blank" class="btn btn-success"><i class="fa fa-print"></i>Export To Excel</a>
+        <?php } ?>
         <br>
         <br>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="5">
