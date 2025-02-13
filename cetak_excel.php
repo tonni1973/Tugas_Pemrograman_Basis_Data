@@ -8,7 +8,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
-// Header tabel
+
 $headers = ['No', 'User', 'Buku', 'Tanggal Peminjaman', 'Tanggal Pengembalian', 'Status Peminjaman'];
 $column = 'A';
 foreach ($headers as $header) {
@@ -16,9 +16,27 @@ foreach ($headers as $header) {
     $column++;
 }
 
-// Ambil data dari database
-$query = mysqli_query($koneksi, "SELECT * FROM peminjaman LEFT JOIN user on user.id_user = peminjaman.id_user LEFT JOIN buku on buku.id_buku = peminjaman.id_buku");
-$rowNumber = 2; // Baris mulai setelah header
+$where = [];
+if (!empty($_GET['user'])) {
+    $where[] = "peminjaman.id_user = '" . $_GET['user'] . "'";
+}
+if (!empty($_GET['status'])) {
+    $where[] = "peminjaman.status_peminjaman = '" . $_GET['status'] . "'";
+}
+if (!empty($_GET['tanggal_peminjaman'])) {
+    $where[] = "peminjaman.tanggal_peminjaman = '" . $_GET['tanggal_peminjaman'] . "'";
+}
+if (!empty($_GET['tanggal_pengembalian'])) {
+    $where[] = "peminjaman.tanggal_pengembalian = '" . $_GET['tanggal_pengembalian'] . "'";
+}
+
+
+$where_clause = !empty($where) ? " WHERE " . implode(" AND ", $where) : "";
+
+
+$query = mysqli_query($koneksi, "SELECT * FROM peminjaman LEFT JOIN user ON user.id_user = peminjaman.id_user LEFT JOIN buku ON buku.id_buku = peminjaman.id_buku $where_clause");
+
+$rowNumber = 2; 
 $no = 1;
 
 while ($data = mysqli_fetch_array($query)) {
@@ -31,7 +49,7 @@ while ($data = mysqli_fetch_array($query)) {
     $rowNumber++;
 }
 
-// Set header untuk unduhan Excel
+
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename="laporan_peminjaman.xlsx"');
 header('Cache-Control: max-age=0');
