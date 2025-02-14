@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 14, 2025 at 10:42 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Feb 14, 2025 at 04:27 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,31 +28,34 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `buku` (
-  `id_buku` int NOT NULL,
-  `id_kategori` int DEFAULT NULL,
-  `judul` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `penulis` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `penerbit` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `tahun_terbit` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `deskripsi` text COLLATE utf8mb4_general_ci
+  `id_buku` int(11) NOT NULL,
+  `id_kategori` int(11) DEFAULT NULL,
+  `judul` varchar(255) DEFAULT NULL,
+  `penulis` varchar(255) DEFAULT NULL,
+  `penerbit` varchar(255) DEFAULT NULL,
+  `tahun_terbit` varchar(255) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `stok` int(11) NOT NULL DEFAULT 0,
+  `cover` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `buku`
 --
 
-INSERT INTO `buku` (`id_buku`, `id_kategori`, `judul`, `penulis`, `penerbit`, `tahun_terbit`, `deskripsi`) VALUES
-(6, 4, 'Sapiens: A Brief History of Humankind', 'Yuval Noah Harari', 'Harper', '2014', 'Buku sejarah yang mengulas evolusi manusia dari zaman purba hingga modern.'),
-(7, 3, 'Atomic Habits', 'James Clear', 'Avery', '2018', 'Buku tentang membangun kebiasaan baik dan menghentikan kebiasaan buruk.'),
-(8, 3, 'To Kill a Mockingbird', 'Harper Lee', 'J.B. Lippincott', '1960', 'Novel klasik yang membahas isu rasisme dan keadilan di Amerika.'),
-(9, 5, '1984', 'George Orwell', 'Secker & Warburg', '1949', 'Novel distopia yang menggambarkan pemerintahan totalitarian.'),
-(10, 2, 'Becoming', 'Michelle Obama', 'Crown', '2018', 'Memoar perjalanan hidup mantan Ibu Negara Amerika Serikat.'),
-(11, 2, 'The Subtle Art of Not Giving a F*ck', 'Mark Manson', 'HarperOne', '2016', 'Buku pengembangan diri dengan pendekatan realistis dan berani.'),
-(12, 5, 'The Alchemist', 'Paulo Coelho', 'HarperOne', '1988', 'Novel tentang petualangan seorang gembala mencari harta karun.'),
-(13, 3, 'Rich Dad Poor Dad', 'Robert T. Kiyosaki', 'Warner Books', '1997', 'Buku tentang pentingnya literasi finansial.'),
-(14, 4, 'The Catcher in the Rye', 'J.D. Salinger', 'Little, Brown', '1951', 'Kisah seorang remaja yang mencari makna hidup di tengah kegelisahan.'),
-(15, 5, 'Educated', 'Tara Westover', 'Random House', '2018', 'Memoar tentang perjuangan mendapatkan pendidikan formal.'),
-(16, 1, 'Thinking, Fast and Slow', 'Daniel Kahneman', 'Farrar, Straus', '2011', 'Penelitian psikologi tentang cara berpikir cepat (intuitif) dan lambat (analitis).');
+INSERT INTO `buku` (`id_buku`, `id_kategori`, `judul`, `penulis`, `penerbit`, `tahun_terbit`, `deskripsi`, `stok`, `cover`) VALUES
+(6, 4, 'Sapiens: A Brief History of Humankind', 'Yuval Noah Harari', 'Harper', '2014', 'Buku sejarah yang mengulas evolusi manusia dari zaman purba hingga modern.', 10, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTYY7n0e-GylssxKw9s-5EYUo65I3liFsIGEVo5ynV3PZngtaCV'),
+(7, 3, 'Atomic Habits', 'James Clear', 'Avery', '2018', 'Buku tentang membangun kebiasaan baik dan menghentikan kebiasaan buruk.', 10, ''),
+(8, 3, 'To Kill a Mockingbird', 'Harper Lee', 'J.B. Lippincott', '1960', 'Novel klasik yang membahas isu rasisme dan keadilan di Amerika.', 10, ''),
+(9, 5, '1984', 'George Orwell', 'Secker & Warburg', '1949', 'Novel distopia yang menggambarkan pemerintahan totalitarian.', 10, 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327144697i/3744438.jpg'),
+(10, 2, 'Becoming', 'Michelle Obama', 'Crown', '2018', 'Memoar perjalanan hidup mantan Ibu Negara Amerika Serikat.', 10, 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1528206996i/38746485.jpg'),
+(11, 2, 'The Subtle Art of Not Giving a F*ck', 'Mark Manson', 'HarperOne', '2016', 'Buku pengembangan diri dengan pendekatan realistis dan berani.', 10, 'https://ebooks.gramedia.com/ebook-covers/34319/image_highres/ID_HCO2016MTH09TSAONGAF.jpeg'),
+(12, 5, 'The Alchemist', 'Paulo Coelho', 'HarperOne', '1988', 'Novel tentang petualangan seorang gembala mencari harta karun.', 10, 'https://ebooks.gramedia.com/ebook-covers/29408/big_covers/ID_HCO2015MTH12TALC.jpeg'),
+(13, 3, 'Rich Dad Poor Dad', 'Robert T. Kiyosaki', 'Warner Books', '1997', 'Buku tentang pentingnya literasi finansial.', 10, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Ffmy_08oqaMLmBVWiOfB-xU97hwWCUGiyQ&s'),
+(14, 4, 'The Catcher in the Rye', 'J.D. Salinger', 'Little, Brown', '1951', 'Kisah seorang remaja yang mencari makna hidup di tengah kegelisahan.', 10, 'https://upload.wikimedia.org/wikipedia/id/3/32/Rye_catcher.jpg'),
+(15, 5, 'Educated', 'Tara Westover', 'Random House', '2018', 'Memoar tentang perjuangan mendapatkan pendidikan formal.', 10, 'https://cdn.gramedia.com/uploads/products/65decde8c5.jpg'),
+(16, 1, 'Thinking, Fast and Slow', 'Daniel Kahneman', 'Farrar, Straus', '2011', 'Penelitian psikologi tentang cara berpikir cepat (intuitif) dan lambat (analitis).', 10, 'https://m.media-amazon.com/images/I/71f6DceqZAL.jpg'),
+(18, 7, 'Chasing the Blue Flames', 'Saufina', 'Gramedia Pustaka Utama', '2020', 'Buku ini menceritakan kisah Lulu yang berusaha move on dari Damar. Ketika Lulu memiliki kesempatan kembali ke masa lalu, ia dihadapkan pada pilihan untuk menghindari pertemuan dengan Damar demi menghindari patah hati di masa depan. \r\n', 10, 'Chasing the Blue Flames.jpeg');
 
 -- --------------------------------------------------------
 
@@ -61,8 +64,8 @@ INSERT INTO `buku` (`id_buku`, `id_kategori`, `judul`, `penulis`, `penerbit`, `t
 --
 
 CREATE TABLE `kategori` (
-  `id_kategori` int NOT NULL,
-  `kategori` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id_kategori` int(11) NOT NULL,
+  `kategori` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -70,14 +73,14 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
-(1, 'Non-Fiksi'),
-(2, 'Sejarah'),
-(3, 'Pengembangan Diri'),
-(4, 'Fiksi'),
 (5, 'Biografi'),
-(6, 'Filsafat'),
 (7, 'Fantasi'),
-(8, 'Romansa');
+(4, 'Fiksi'),
+(6, 'Filsafat'),
+(1, 'Non-Fiksi'),
+(3, 'Pengembangan Diri'),
+(8, 'Romansa'),
+(2, 'Sejarah');
 
 -- --------------------------------------------------------
 
@@ -86,33 +89,32 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
 --
 
 CREATE TABLE `peminjaman` (
-  `id_peminjaman` int NOT NULL,
-  `id_user` int DEFAULT NULL,
-  `id_buku` int DEFAULT NULL,
-  `tanggal_peminjaman` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `tanggal_pengembalian` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `status_peminjaman` enum('dipinjam','dikembalikan') COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id_peminjaman` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `id_buku` int(11) DEFAULT NULL,
+  `tanggal_peminjaman` varchar(255) DEFAULT NULL,
+  `tanggal_pengembalian` varchar(255) DEFAULT NULL,
+  `status_peminjaman` enum('dipinjam','dikembalikan','disetujui','ditolak','proses') DEFAULT NULL,
+  `denda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `peminjaman`
 --
 
-INSERT INTO `peminjaman` (`id_peminjaman`, `id_user`, `id_buku`, `tanggal_peminjaman`, `tanggal_pengembalian`, `status_peminjaman`) VALUES
-(4, 6, 15, '2025-01-25', '2025-01-27', 'dipinjam'),
-(5, 6, 8, '2025-01-25', '2025-01-30', 'dipinjam'),
-(6, 6, 14, '2025-01-25', '2025-01-27', 'dipinjam'),
-(7, 8, 12, '2025-01-25', '2025-01-28', 'dipinjam'),
-(8, 8, 9, '2025-01-26', '2025-01-28', 'dipinjam'),
-(9, 8, 16, '2025-01-25', '2025-01-26', 'dipinjam'),
-(10, 9, 10, '2025-01-26', '2025-01-28', 'dipinjam'),
-(11, 9, 11, '2025-01-25', '2025-01-27', 'dipinjam'),
-(12, 5, 6, '2025-01-26', '2025-01-28', 'dipinjam'),
-(13, 4, 15, '2025-01-26', '2025-01-28', 'dipinjam'),
-(14, 7, 13, '2025-01-26', '2025-01-30', 'dipinjam'),
-(15, 8, 13, '2025-01-26', '2025-01-30', 'dipinjam');
-
-
+INSERT INTO `peminjaman` (`id_peminjaman`, `id_user`, `id_buku`, `tanggal_peminjaman`, `tanggal_pengembalian`, `status_peminjaman`, `denda`) VALUES
+(15, 8, 13, '2025-01-26', '2025-01-30', 'dikembalikan', 0),
+(20, 4, 7, '2025-02-10', '2025-02-12', 'dikembalikan', 2000),
+(21, 4, 18, '2025-02-13', '2025-02-14', 'dikembalikan', 0),
+(22, 4, 18, '2025-02-13', '2025-02-14', 'dikembalikan', 0),
+(23, 4, 6, '2025-02-13', '2025-02-15', 'dikembalikan', 0),
+(24, 4, 18, '2025-02-13', '2025-02-14', 'dikembalikan', 0),
+(25, 4, 8, '2025-02-14', '2025-02-15', 'dikembalikan', 0),
+(26, 4, 8, '2025-02-14', '2025-02-15', 'dikembalikan', 0),
+(27, 4, 6, '2025-02-13', '2025-02-14', 'dikembalikan', 0),
+(28, 4, 10, '2025-02-14', '2025-02-15', 'dikembalikan', 0),
+(29, 4, 6, '2025-02-12', '2025-02-13', 'dikembalikan', 1000),
+(30, 4, 6, '2025-02-14', '2025-02-15', 'dikembalikan', 0);
 
 -- --------------------------------------------------------
 
@@ -121,11 +123,11 @@ INSERT INTO `peminjaman` (`id_peminjaman`, `id_user`, `id_buku`, `tanggal_peminj
 --
 
 CREATE TABLE `ulasan` (
-  `id_ulasan` int NOT NULL,
-  `id_user` int DEFAULT NULL,
-  `id_buku` int DEFAULT NULL,
-  `ulasan` text COLLATE utf8mb4_general_ci,
-  `rating` int DEFAULT NULL
+  `id_ulasan` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `id_buku` int(11) DEFAULT NULL,
+  `ulasan` text DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -177,14 +179,14 @@ INSERT INTO `ulasan` (`id_ulasan`, `id_user`, `id_buku`, `ulasan`, `rating`) VAL
 --
 
 CREATE TABLE `user` (
-  `id_user` int NOT NULL,
-  `nama` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `username` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `alamat` text COLLATE utf8mb4_general_ci,
-  `no_telepon` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `level` enum('admin','peminjam') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id_user` int(11) NOT NULL,
+  `nama` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `alamat` text DEFAULT NULL,
+  `no_telepon` varchar(255) DEFAULT NULL,
+  `level` enum('admin','peminjam') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -198,7 +200,9 @@ INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `email`, `alamat`
 (6, 'Siti Aisyah', 'aisyah', 'ac43724f16e9241d990427ab7c8f4228', 'aisyah@example.com', 'Jakarta', '081234567890', 'peminjam'),
 (7, 'Rahmat Hidayat', 'rahmat', 'ac43724f16e9241d990427ab7c8f4228', 'rahmat@example.com', 'Surabaya', '082345678901', 'peminjam'),
 (8, 'Dewi Kartika', 'dewi', 'ac43724f16e9241d990427ab7c8f4228', 'dewi@example.com', 'Yogyakarta', '083456789012', 'peminjam'),
-(9, 'ahha', 'ahha', 'ac43724f16e9241d990427ab7c8f4228', 'ahha@gmail', 'Bandung', '085888666677', 'peminjam');
+(9, 'ahha', 'ahha', 'ac43724f16e9241d990427ab7c8f4228', 'ahha@gmail', 'Bandung', '085888666677', 'peminjam'),
+(10, 'Sujono', 'onoosujono', 'fcea920f7412b5da7be0cf42b8c93759', 'jonoSujono@gmail.com', 'Surabaya', '081354254875', 'admin'),
+(11, 'Tejo', 'tejoparejo', 'fcea920f7412b5da7be0cf42b8c93759', 'mangtejo@gmail.com', 'Purwakarta', '081354254874', 'peminjam');
 
 --
 -- Indexes for dumped tables
@@ -215,7 +219,8 @@ ALTER TABLE `buku`
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id_kategori`);
+  ADD PRIMARY KEY (`id_kategori`),
+  ADD UNIQUE KEY `kategori` (`kategori`);
 
 --
 -- Indexes for table `peminjaman`
@@ -247,31 +252,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `ulasan`
 --
 ALTER TABLE `ulasan`
-  MODIFY `id_ulasan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ulasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
